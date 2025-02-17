@@ -5,7 +5,7 @@ const Level = ({ selectedLevel, onLevelChange, isOpen, setIsOpen }) => {
 
   return (
     <div className="w-full h-20 top-0 flex justify-center fixed text-white">
-      <div className="max-w-80 h-10 m-0 text-lg md:text-3xl font-black border-2 border-blue-600 text-center bg-blue-600/80 rounded flex items-center justify-between md:p-2 relative">
+      <div className="max-w-80 h-10 m-0 pl-2 text-lg md:text-3xl font-black border-2 border-blue-600 text-center bg-blue-600/80 rounded flex items-center justify-between md:p-2 relative">
         <p>{selectedLevel}</p>
         <button
           className={`w-6 h-6 ml-4 mr-2 mb-2 border-t-4 border-r-4 border-black transform transition-transform duration-300 ${
