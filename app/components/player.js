@@ -24,7 +24,15 @@ const Player = ({ position, rotation, isMoving }) => {
                     className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
                 ></div>
                 <div 
-                    className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "waving-animation" : ""}`} 
+                    className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
+                    style={{ animationDelay: "0.2s" }}
+                ></div>
+                <div 
+                    className={`w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "waving-animation" : ""}`} 
+                    style={{ animationDelay: "0.2s" }}
+                ></div>
+                <div 
+                    className={`w-[10px] h-[10px] bg-black/20 rounded ${!isMoving ? "waving-animation" : ""}`} 
                     style={{ animationDelay: "0.2s" }}
                 ></div>
             </div>
