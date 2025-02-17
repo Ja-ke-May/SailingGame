@@ -11,7 +11,7 @@ import Points from "./points";
 
 useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=GTM-WZ4N7LG5';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-ZG3EYE9D4F';
     script.async = true;
     document.body.appendChild(script);
   
@@ -19,7 +19,7 @@ useEffect(() => {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
   
-    gtag('config', 'GTM-WZ4N7LG5');
+    gtag('config', 'G-ZG3EYE9D4F');
   
     return () => {
       document.body.removeChild(script);
