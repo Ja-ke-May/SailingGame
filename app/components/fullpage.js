@@ -27,6 +27,14 @@ const levelDirections = {
     "Level 5": 200,
 };
 
+const windTypes = {
+    "Level 1": "Offshore Wind",
+    "Level 2": "Onshore Wind",
+    "Level 3": "Cross-Shore Wind",
+    "Level 4": "Cross Offshore Wind",
+    "Level 5": "Tornado",
+};
+
 export default function FullPage() {
     const [level, setLevel] = useState(1); // Default to Level 1 speed
     const [selectedLevel, setSelectedLevel] = useState("Level 1");
@@ -35,6 +43,7 @@ export default function FullPage() {
     const [previousPoints, setPreviousPoints] = useState(0); 
     const [currentDirection, setCurrentDirection] = useState(direction); // For dynamically updating direction
     const [directionCounter, setDirectionCounter] = useState(1);
+    const [noGoZone, setNoGoZone] = useState(false);
 
     useEffect(() => {
         if (selectedLevel === "Level 5") {
@@ -53,6 +62,14 @@ export default function FullPage() {
         setPoints(0); 
     };
 
+    const flashNoGo = () => {
+        setNoGoZone(true); // Set No-Go Zone to true
+        setTimeout(() => {
+            setNoGoZone(false); // After 400ms, set No-Go Zone back to false
+        }, 2000); 
+    };
+    
+
     const handleLevelChange = (levelName) => {
         resetPoints();
         setLevel(levelSpeeds[levelName]); // Update the speed based on the level
@@ -63,13 +80,13 @@ export default function FullPage() {
         setIsOpen(false);
     };
 
-    
+    const windType = windTypes[selectedLevel]; 
 
     return (
         <div>
             
-            <Game level={level} direction={currentDirection} setPoints={setPoints} resetPoints={resetPoints}/>
-            <Beach />
+            <Game level={level} direction={currentDirection} setPoints={setPoints} resetPoints={resetPoints} flashNoGo={flashNoGo}/>
+            <Beach windType={windType} noGoZone={noGoZone} />
             <Wind level={level} direction={currentDirection}/>
             <Points points={points} previousPoints={previousPoints}/>
             <Level selectedLevel={selectedLevel} onLevelChange={handleLevelChange} isOpen={isOpen} setIsOpen={setIsOpen} />

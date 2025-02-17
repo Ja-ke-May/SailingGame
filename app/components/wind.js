@@ -13,7 +13,7 @@ const Wind = ({ direction, level }) => {
       >
         <polygon
           points="16,2 24,20 8,20"
-          fill="darkRed"
+          fill="red"
           opacity={.7}
         />
       </svg>

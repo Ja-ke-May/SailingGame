@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Player from "./player";
 import CollectibleBuoy from "./collectableCircle";
 
-const Game = ({ level, direction, setPoints, resetPoints }) => {
+const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     const [playerPosition, setPlayerPosition] = useState({ x: 100, y: 100 });
     const [targetPosition, setTargetPosition] = useState({ x: 100, y: 100 });
     const [rotation, setRotation] = useState(0);
@@ -53,12 +53,14 @@ const Game = ({ level, direction, setPoints, resetPoints }) => {
             angleDifference = 360 - angleDifference;
         }
 
-        // If the click is within 22 degrees of the current direction (wind direction)
-        if (angleDifference > 22) {
-            setTargetPosition({ x, y });
-            setIsMoving(true);
-        }
-    };
+         // If the click is within 22 degrees of the current direction (wind direction)
+    if (angleDifference > 22) {
+        setTargetPosition({ x, y });
+        setIsMoving(true);
+    } else {
+        flashNoGo(); // Call flashNoGo if the click is outside the allowed range
+    }
+};
 
     useEffect(() => {
         const interval = setInterval(() => {
