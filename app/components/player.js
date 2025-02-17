@@ -19,21 +19,21 @@ const Player = ({ position, rotation, isMoving }) => {
 
             {/* Sail (3 squares in a vertical line) */}
             <div className="absolute -top-[-8px] -left-[-24px] flex flex-col items-center">
-                <div className="w-[6px] h-[6px] bg-black rounded-full"></div>
+                <div className="w-[8px] h-[8px] bg-black rounded-full"></div>
                 <div 
                     className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
                 ></div>
                 <div 
-                    className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
+                    className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "waving-animation" : ""}`} 
                     style={{ animationDelay: "0.2s" }}
                 ></div>
                 <div 
-                    className={`w-[10px] h-[10px] bg-black/50 rounded ${!isMoving ? "waving-animation" : ""}`} 
-                    style={{ animationDelay: "0.2s" }}
+                    className={`w-[10px] h-[10px] bg-black/50 rounded ${!isMoving ? "medium-waving-animation" : ""}`} 
+                    style={{ animationDelay: "0.3s" }}
                 ></div>
                 <div 
-                    className={`w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "waving-animation" : ""}`} 
-                    style={{ animationDelay: "0.2s" }}
+                    className={`w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "big-waving-animation" : ""}`} 
+                    style={{ animationDelay: "0.4s" }}
                 ></div>
             </div>
         </div>

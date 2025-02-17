@@ -31,10 +31,42 @@
   }
 }
 
+@keyframes mediumWave {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-8px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+@keyframes bigWave {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-10px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
 .waving-animation {
   animation: wave 1s ease-in-out infinite;
 }
 
 .small-waving-animation {
   animation: smallWave 1s ease-in-out infinite;
+}
+
+.medium-waving-animation {
+  animation: mediumWave 1s ease-in-out infinite;
+}
+
+.big-waving-animation {
+  animation: bigWave 1s ease-in-out infinite;
 }
