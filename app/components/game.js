@@ -11,7 +11,7 @@ const Game = ({ level, direction, setPoints, resetPoints }) => {
     const speed = level;
 
     // Rotation speed (adjust to your needs)
-    const rotationSpeed = 0.05;
+    const rotationSpeed = 0.02;
 
     // Generate random buoy position
     const generateBuoyPosition = () => {
