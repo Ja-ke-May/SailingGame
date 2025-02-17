@@ -18,7 +18,7 @@ const Player = ({ position, rotation, isMoving }) => {
             />
 
             {/* Sail (3 squares in a vertical line) */}
-            <div className="absolute left-1/3 -top-[-10px] flex flex-col items-center">
+            <div className="absolute -top-[-8px] -left-[-24px] flex flex-col items-center">
                 <div className="w-[10px] h-[10px] bg-black rounded-full"></div>
                 <div 
                     className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
