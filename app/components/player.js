@@ -18,8 +18,8 @@ const Player = ({ position, rotation, isMoving }) => {
             />
 
             {/* Sail (3 squares in a vertical line) */}
-            <div className="absolute -top-[-8px] -left-[-24px] flex flex-col items-center">
-                <div className="w-[8px] h-[8px] bg-black rounded-full"></div>
+            <div className="absolute -top-[-5px] -left-[-10px] md:-top-[-8px] md:-left-[-24px] flex flex-col items-center">
+                <div className="w-[6px] h-[6px] md:w-[10px] md:h-[10px] bg-black rounded-full"></div>
                 <div 
                     className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`} 
                 ></div>
@@ -32,7 +32,7 @@ const Player = ({ position, rotation, isMoving }) => {
                     style={{ animationDelay: "0.3s" }}
                 ></div>
                 <div 
-                    className={`w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "big-waving-animation" : ""}`} 
+                    className={`hidden md:block w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "big-waving-animation" : ""}`} 
                     style={{ animationDelay: "0.4s" }}
                 ></div>
             </div>
