@@ -9,7 +9,22 @@ import Footer from "./footer";
 import Points from "./points";
 
 
-
+useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=GTM-WZ4N7LG5';
+    script.async = true;
+    document.body.appendChild(script);
+  
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'GTM-WZ4N7LG5');
+  
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
 
 let direction = 180;
