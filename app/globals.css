@@ -7,15 +7,34 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes wave {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-5px);
+  }
+  100% {
+      transform: translateX(0);
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes smallWave {
+  0% {
+      transform: translateX(0);
+  }
+  50% {
+      transform: translateX(-2px);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+.waving-animation {
+  animation: wave 1s ease-in-out infinite;
+}
+
+.small-waving-animation {
+  animation: smallWave 1s ease-in-out infinite;
 }
