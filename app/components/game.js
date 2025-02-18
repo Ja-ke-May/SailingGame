@@ -7,26 +7,24 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     const [targetPosition, setTargetPosition] = useState({ x: 100, y: 100 });
     const [rotation, setRotation] = useState(0);
     const [isMoving, setIsMoving] = useState(false);
-    const [buoyPosition, setBuoyPosition] = useState(null); // Store buoy position
+    const [buoyPosition, setBuoyPosition] = useState(null); 
     const speed = level;
 
-    // Rotation speed (adjust to your needs)
+    
     const rotationSpeed = 0.08;
 
-    // Generate random buoy position
     const generateBuoyPosition = () => {
         const gameContainer = document.querySelector('.game-container').getBoundingClientRect();
-        const x = Math.random() * (gameContainer.width - 50); // Random X position inside container
-        const y = Math.random() * (gameContainer.height - 50); // Random Y position inside container
+        const x = Math.random() * (gameContainer.width - 50);
+        const y = Math.random() * (gameContainer.height - 50); 
         return { x, y };
     };
 
-    // Check if player touches buoy
     const checkCollision = (buoy, player) => {
         const distance = Math.sqrt(
             Math.pow(buoy.x - player.x, 2) + Math.pow(buoy.y - player.y, 2)
         );
-        return distance < 30; // Adjust this threshold for touch detection
+        return distance < 30; 
     };
 
     const handleClick = (event) => {
@@ -34,31 +32,25 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
         const x = event.clientX - gameContainer.left;
         const y = event.clientY - gameContainer.top;
 
-        // Calculate the direction of the click
         const dx = x - playerPosition.x;
         const dy = y - playerPosition.y;
-        const clickDirection = Math.atan2(dy, dx) * (180 / Math.PI); // Convert to degrees
+        const clickDirection = Math.atan2(dy, dx) * (180 / Math.PI); 
 
-        // Normalize the direction (ensure it's between 0 and 360)
         const normalizedClickDirection = (clickDirection + 360) % 360;
 
-        // Normalize the current direction (ensure it's between 0 and 360)
         const normalizedCurrentDirection = (direction + 360) % 360;
 
-        // Calculate the difference between the two directions
         let angleDifference = Math.abs((normalizedClickDirection - 90) - normalizedCurrentDirection);
 
-        // Ensure the angle is within a 180-degree range (smallest angle)
         if (angleDifference > 180) {
             angleDifference = 360 - angleDifference;
         }
 
-         // If the click is within 22 degrees of the current direction (wind direction)
     if (angleDifference > 22) {
         setTargetPosition({ x, y });
         setIsMoving(true);
     } else {
-        flashNoGo(); // Call flashNoGo if the click is outside the allowed range
+        flashNoGo(); 
     }
 };
 
@@ -68,11 +60,11 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
                 let newX = prev.x;
                 let newY = prev.y;
 
-                // Convert the direction to radians
+                
                 const directionInRadians = ((direction - 90) * Math.PI) / 180;
 
                 if (!isMoving) {
-                    // Calculate movement in both X and Y directions based on the angle
+                    
                     newX += Math.cos(directionInRadians) * speed / 5;
                     newY += Math.sin(directionInRadians) * speed / 5;
                 }
@@ -89,7 +81,7 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
 
                     const angle = Math.atan2(dy, dx);
                     setRotation((prevRotation) => {
-                        // Smooth rotation
+                    
                         const diff = angle - prevRotation;
                         const rotationDelta = (diff + Math.PI) % (2 * Math.PI) - Math.PI;
                         return prevRotation + Math.min(Math.max(rotationDelta, -rotationSpeed), rotationSpeed);
@@ -99,17 +91,15 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
                     newY = prev.y + (dy / distance) * speed;
                 }
 
-                // Check if player is near the container's edges (set the threshold as 10px margin)
                 const margin = 10;
                 const gameContainer = document.querySelector('.game-container').getBoundingClientRect();
                 if (
                     newX <= margin || newX >= gameContainer.width - margin ||
                     newY <= margin || newY >= gameContainer.height - margin
                 ) {
-                     // Use setTimeout to delay the reset
                      setTimeout(() => {
                         resetPoints();
-                    }, 200); // Set the delay (500ms in this example)
+                    }, 200); 
 
                     return { x: 100, y: 100 };
                      
@@ -118,9 +108,8 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
                 return { x: newX, y: newY };
             });
 
-            // Check for collision with buoy
             if (buoyPosition && checkCollision(buoyPosition, playerPosition)) {
-                setBuoyPosition(null); // Remove the buoy if touched
+                setBuoyPosition(null); 
                 setPoints(prevPoints => prevPoints + 1); 
             }
         }, 16);
@@ -129,7 +118,6 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     }, [targetPosition, speed, direction, isMoving, buoyPosition, playerPosition]);
 
     useEffect(() => {
-        // Spawn a new buoy when the game starts or after a buoy is collected
         if (!buoyPosition) {
             setBuoyPosition(generateBuoyPosition());
         }

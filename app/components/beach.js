@@ -12,7 +12,7 @@ const Beach = ( { windType, noGoZone }) => {
         {noGoZone ? (
           <span className="text-red-700 brightness-125 animate-pulse">No-Go Zone!</span> 
         ) : (
-          windType // Otherwise show wind type
+          windType 
         )}
       </p>
     </div>

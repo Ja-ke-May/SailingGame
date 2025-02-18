@@ -36,12 +36,12 @@ const windTypes = {
 };
 
 export default function FullPage() {
-    const [level, setLevel] = useState(1); // Default to Level 1 speed
+    const [level, setLevel] = useState(1); 
     const [selectedLevel, setSelectedLevel] = useState("Level 1");
     const [isOpen, setIsOpen] = useState(false);
     const [points, setPoints] = useState(0); 
     const [previousPoints, setPreviousPoints] = useState(0); 
-    const [currentDirection, setCurrentDirection] = useState(direction); // For dynamically updating direction
+    const [currentDirection, setCurrentDirection] = useState(direction); 
     const [directionCounter, setDirectionCounter] = useState(1);
     const [noGoZone, setNoGoZone] = useState(false);
 
@@ -49,10 +49,10 @@ export default function FullPage() {
         if (selectedLevel === "Level 5") {
             const interval = setInterval(() => {
                 setCurrentDirection(directionCounter);
-                setDirectionCounter(prev => (prev < 360 ? prev + 1 : 1)); // Reset to 1 after 360
-            }, 100); // Update direction every 100ms or as needed
+                setDirectionCounter(prev => (prev < 360 ? prev + 1 : 1)); 
+            }, 100); 
 
-            return () => clearInterval(interval); // Cleanup on unmount or level change
+            return () => clearInterval(interval); 
         }
     }, [selectedLevel, directionCounter]); 
 
@@ -63,19 +63,19 @@ export default function FullPage() {
     };
 
     const flashNoGo = () => {
-        setNoGoZone(true); // Set No-Go Zone to true
+        setNoGoZone(true); 
         setTimeout(() => {
-            setNoGoZone(false); // After 400ms, set No-Go Zone back to false
+            setNoGoZone(false); 
         }, 2000); 
     };
     
 
     const handleLevelChange = (levelName) => {
         resetPoints();
-        setLevel(levelSpeeds[levelName]); // Update the speed based on the level
+        setLevel(levelSpeeds[levelName]); 
         setSelectedLevel(levelName);
         if (levelName !== "Level 5") {
-            setCurrentDirection(levelDirections[levelName]); // Static direction for other levels
+            setCurrentDirection(levelDirections[levelName]); 
         }
         setIsOpen(false);
     };

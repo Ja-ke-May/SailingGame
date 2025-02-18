@@ -1,17 +1,14 @@
 const Player = ({ position, rotation, isMoving, direction }) => {
     const { x, y } = position;
 
-    // Calculate relative wind angle
     let windRelativeAngle = ((direction - (rotation * (180 / Math.PI)) - 270) + 360) % 360;
     if (windRelativeAngle > 180) windRelativeAngle -= 360;
     
-    // Apply 20-degree margin for no-go zone
     let adjustedSailAngle = windRelativeAngle;
     if (adjustedSailAngle > -20 && adjustedSailAngle < 20) {
         adjustedSailAngle = adjustedSailAngle < 0 ? -20 : 20;
     }
 
-    // Constrain sail angle to a reasonable range (-90 to 90 degrees)
     const sailRotation = Math.max(-90, Math.min(90, adjustedSailAngle));
 
     return (
@@ -20,7 +17,7 @@ const Player = ({ position, rotation, isMoving, direction }) => {
             style={{
                 top: `${y}px`,
                 left: `${x}px`,
-                transform: `translate(-50%, -50%) rotate(${rotation + Math.PI / 2}rad)`, // Rotate player
+                transform: `translate(-50%, -50%) rotate(${rotation + Math.PI / 2}rad)`, 
             }}
         >
             {/* Player Body (Triangle) */}
@@ -38,7 +35,7 @@ const Player = ({ position, rotation, isMoving, direction }) => {
                 <div 
                 style={{
                     transform: `rotate(${sailRotation}deg)`,
-                    transformOrigin: "top center", // Ensures rotation happens from the mast
+                    transformOrigin: "top center", 
                 }}>
                 <div className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`}></div>
                 <div className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "waving-animation" : ""}`} style={{ animationDelay: "0.2s" }}></div>

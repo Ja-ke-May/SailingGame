@@ -9,7 +9,7 @@ const Level = ({ selectedLevel, onLevelChange, isOpen, setIsOpen }) => {
         className="max-w-80 h-10 m-0 pl-2 text-lg md:text-3xl font-black text-center rounded flex items-center justify-between md:p-2 relative"
         style={{
           backgroundColor: 'rgba(0, 105, 148, 0.9)',
-          border: '2px solid rgba(0, 105, 148, 0.9)', // Border color matching the background
+          border: '2px solid rgba(0, 105, 148, 0.9)',
         }}
       >
         <p>{selectedLevel}</p>
@@ -23,7 +23,7 @@ const Level = ({ selectedLevel, onLevelChange, isOpen, setIsOpen }) => {
           <div
             className="absolute top-full left-0 w-full rounded shadow-md"
             style={{
-              backgroundColor: 'rgba(0, 105, 148, 0.9)', // Dropdown background
+              backgroundColor: 'rgba(0, 105, 148, 0.9)', 
             }}
           >
             {levels
@@ -33,13 +33,12 @@ const Level = ({ selectedLevel, onLevelChange, isOpen, setIsOpen }) => {
                 key={index}
                 className="p-2 cursor-pointer rounded transition-all"
                 onClick={() => {
-                  onLevelChange(level); // Notify parent of level change
+                  onLevelChange(level);
                   setIsOpen(false);
                 }}
                 style={{
-                  backgroundColor: 'rgba(0, 105, 148, 0.9)', // Dropdown item background
+                  backgroundColor: 'rgba(0, 105, 148, 0.9)', 
                 }}
-                // Added hover effect with a darker shade of blue
                 onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(0, 85, 120, 0.9)'}
                 onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(0, 105, 148, 0.9)'}
               >
