@@ -147,6 +147,7 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
             onClick={handleClick}
         >
             <Player 
+            direction={direction}
             position={playerPosition} 
             rotation={rotation}
             isMoving={isMoving} />
