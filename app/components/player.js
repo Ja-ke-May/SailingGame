@@ -40,7 +40,7 @@ const Player = ({ position, rotation, isMoving, direction }) => {
                 <div className={`w-[10px] h-[10px] bg-black/80 rounded ${!isMoving ? "small-waving-animation" : ""}`}></div>
                 <div className={`w-[10px] h-[10px] bg-black/60 rounded ${!isMoving ? "waving-animation" : ""}`} style={{ animationDelay: "0.2s" }}></div>
                 <div className={`w-[10px] h-[10px] bg-black/50 rounded ${!isMoving ? "medium-waving-animation" : ""}`} style={{ animationDelay: "0.3s" }}></div>
-                <div className={`hidden md:block w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "big-waving-animation" : ""}`} style={{ animationDelay: "0.4s" }}></div>
+                <div className={`hidden md:block w-[10px] h-[10px] bg-black/40 rounded ${!isMoving ? "big-waving-animation" : ""}`} style={{ animationDelay: "0.2s" }}></div>
                 </div>
             </div>
         </div>

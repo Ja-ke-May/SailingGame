@@ -43,7 +43,7 @@ export default function FullPage() {
     const [previousPoints, setPreviousPoints] = useState(0); 
     const [currentDirection, setCurrentDirection] = useState(direction); 
     const [directionCounter, setDirectionCounter] = useState(1);
-    const [noGoZone, setNoGoZone] = useState(false);
+    const [noGoZone, setNoGoZone] = useState(false); 
 
     useEffect(() => {
         if (selectedLevel === "Level 5") {
