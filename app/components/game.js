@@ -182,7 +182,7 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
                             filter: "brightness(1.1) contrast(1.2)",
                             position: "absolute",
                         }}>
-                        <h1 className="text-2xl underline">Sailing Game</h1>
+                        <h1 className="text-2xl font-black underline mb-2 mt-2">Sailing Game</h1>
                         <p>Collect Yellow Buoys for 1 Point.</p>
                         <p>Pass through the Red Buoys for 2 Points.</p>
 <p>Points Top Right</p>
