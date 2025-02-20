@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Player from "./player";
 import CollectibleBuoy from "./collectableCircle";
+import RedBuoyGate from "./RedBuoyGate";
 
 const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     const [playerPosition, setPlayerPosition] = useState({ x: 100, y: 100 });
@@ -8,9 +9,23 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     const [rotation, setRotation] = useState(0);
     const [isMoving, setIsMoving] = useState(false);
     const [buoyPosition, setBuoyPosition] = useState(null); 
+    const [gatePosition, setGatePosition] = useState({
+        x: window.innerWidth,
+        y: Math.random() * (window.innerHeight - 400) + 100, // Initial random position
+      });
+
+      const handlePass = () => {
+        setPoints((prev) => prev + 2);
+    
+        // Generate a new gate when the current one is passed
+        setGatePosition({
+          x: window.innerWidth,
+          y: Math.random() * (window.innerHeight - 400) + 100,
+        });
+      };
+
     const speed = level;
 
-    
     const rotationSpeed = 0.08;
 
     const generateBuoyPosition = () => {
@@ -123,6 +138,8 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
         }
     }, [buoyPosition]);
 
+   
+
     return (
         <div
             className="game-container absolute w-full h-[88%] mt-20 fixed bg-blue-500"
@@ -139,7 +156,15 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
             position={playerPosition} 
             rotation={rotation}
             isMoving={isMoving} />
+
             {buoyPosition && <CollectibleBuoy position={buoyPosition} />}
+
+            <RedBuoyGate 
+        speed={(level/3)} 
+        onPass={handlePass} 
+        playerPosition={playerPosition}
+      />
+
         </div>
     );
 };
