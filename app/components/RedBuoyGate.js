@@ -1,15 +1,22 @@
-"use client"; 
-
 import { useEffect, useState } from "react";
 
 const RedBuoyGate = ({ speed, onPass, playerPosition }) => {
-  const [position, setPosition] = useState({
-    x: window.innerWidth, // Start from the right
-    y: Math.random() * (window.innerHeight - 400) + 100, // Random height
-  });
+    const [position, setPosition] = useState({
+        x: 0, // Initial value set to 0, since it will be updated in useEffect
+        y: 0, // Initial value set to 0
+      });
 
   const [passed, setPassed] = useState(false); // Track whether the gate has been passed
   const [opacity, setOpacity] = useState(1); // Track opacity for fade effect
+
+  useEffect(() => {
+    // This will only run client-side when window is available
+    setPosition({
+      x: window.innerWidth, // Update after mount
+      y: Math.random() * (window.innerHeight - 400) + 100,
+    });
+  }, []); // Empty dependency array ensures this runs only once after the first render
+
 
   useEffect(() => {
     const moveInterval = setInterval(() => {

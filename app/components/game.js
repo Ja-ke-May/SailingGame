@@ -9,10 +9,15 @@ const Game = ({ level, direction, setPoints, resetPoints, flashNoGo }) => {
     const [rotation, setRotation] = useState(0);
     const [isMoving, setIsMoving] = useState(false);
     const [buoyPosition, setBuoyPosition] = useState(null); 
-    const [gatePosition, setGatePosition] = useState({
-        x: window.innerWidth,
-        y: Math.random() * (window.innerHeight - 400) + 100, // Initial random position
-      });
+    const [gatePosition, setGatePosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        // This will only run client-side when window is available
+        setGatePosition({
+          x: window.innerWidth,
+          y: Math.random() * (window.innerHeight - 400) + 100,
+        });
+      }, []); // Run once on client mount
 
       const handlePass = () => {
         setPoints((prev) => prev + 2);
