@@ -90,7 +90,6 @@ export default function FullPage() {
             <Wind level={level} direction={currentDirection}/>
             <Points points={points} previousPoints={previousPoints}/>
             <Level selectedLevel={selectedLevel} onLevelChange={handleLevelChange} isOpen={isOpen} setIsOpen={setIsOpen} />
-            <Footer />
         </div>
     );
 }
